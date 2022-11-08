@@ -8,6 +8,8 @@ type AppProps = {
   setDetailedJob: React.Dispatch<React.SetStateAction<DataTypes>>;
 };
 function JobListCard({ item, setDetailedJob }: AppProps) {
+  const posted = item.updatedAt?.slice(0, 10);
+
   return (
     <div className="min-h-48 shadow-lg shadow-indigo-500/40 flex flex-nowrap justify-between w-[95vw] bg-white shadow-gray-100 rounded-xl mt-5 md:w-[80vw]  max-md:bg-gray-200 max-sm:grid grid-cols-[75px_minmax(50px,_100px)_minmax(20px,_1fr)] grid-rows-[50px_minmax(90px,_1fr)] gap-0">
       <div className="mt-2 mb-2 flex items-center pl-2 max-sm:items-start row-start-2 pr-2 max-sm:mt-0 max-sm:mb-0">
@@ -20,7 +22,7 @@ function JobListCard({ item, setDetailedJob }: AppProps) {
       <div className="w-[40vw] flex flex-col justify-around justify-items-start max-sm:w-[100%] row-start-2 col-start-2 col-end-4 max-ms:flex max-ms:justify-start">
         <Link to="/detailed">
           <h2
-            className="text-fuchsia-900 font-medium text-base"
+            className="text-slate-600 font-medium text-base"
             onClick={() => {
               setDetailedJob(item);
             }}
@@ -42,7 +44,7 @@ function JobListCard({ item, setDetailedJob }: AppProps) {
       <div className="flex flex-col-reverse pt-1 max-sm:flex-col ">
         <div className="flex items-end h-[100%] pr-4 max-sm:col-start-3 justify-end  ">
           <p className="text-base text-slate-400 max-sm:text-sm">
-            Posted 2 days ago
+            Posted {posted}
           </p>
         </div>
         <div className="flex justify-end items-start pr-4 opacity-100 max-sm:opacity-0 col-start-1">
